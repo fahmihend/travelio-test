@@ -1,0 +1,19 @@
+<nav class='navbar navbar-expand-lg navbar-light bg-light'>
+  <div class='container-fluid'>
+    <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
+      <div class='navbar-nav'>
+        <a class='nav-link' id='book' aria-current='page' href='/book'>Books</a>
+        <a class='nav-link' id='wishlist' href='/wishlist'>Wishlist</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+  if (document) {
+    const url = window.location.pathname;
+    const dom = document.getElementById(url.replace('/',''))
+    if (dom) {
+      dom.classList.add('active')
+    }
+  }
+</script>
