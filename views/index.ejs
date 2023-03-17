@@ -73,7 +73,6 @@
     async function postData(id) {
       const dataParsed = JSON.parse('<%- JSON.stringify(data) %>')
       const payload = dataParsed.filter( x => x.bookId === id)
-      console.log(payload[0])
       const request = await fetch('/', {
         method: 'POST',
         headers: {
@@ -82,7 +81,6 @@
         body: JSON.stringify(payload[0]),
       });
       const response = await request.json()
-      console.log(response)
       if (response.message === 'success') {
         window.alert('successfully add to wishlist')
       }

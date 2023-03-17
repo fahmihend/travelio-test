@@ -2,7 +2,7 @@ const booksRepository = require("../models/books.model.js");
 const axios = require("axios");
 const controller = {};
 
-//function to get all the data from the database using tray catch
+//function to get all the data from the database using try catch
 controller.getData = async (req, res) => {
   try {
     let data;
@@ -14,16 +14,14 @@ controller.getData = async (req, res) => {
       data = await booksRepository.find();
     }
     res.render("wishlist", { data: data });
-    // res.json({data: data})
   } catch (err) {
     res.json({ message: err.message });
   }
 };
 
-//functiont to post a data using try catch
+//functiont to add book to wishlist using try catch
 controller.postData = async (req, res) => {
   try {
-    console.log("here", req.body);
     await booksRepository.create({
       title: req.body.title,
       authors: req.body.authors,
@@ -39,16 +37,14 @@ controller.postData = async (req, res) => {
 //function to delete a data using try catch
 controller.deleteData = async (req, res) => {
   try {
-    console.log('here',req.params, req.query)
     await booksRepository.findByIdAndDelete(req.params.id);
-    console.log('delete')
-    res.status(200).json({message: 'success'});
-    // res.redirect('/wishlist')
+    res.status(200).json({ message: "success" });
   } catch (err) {
     res.send(err);
   }
 };
 
+//function to get data from google apis
 controller.getBook = async (req, res) => {
   try {
     const keyword = req.query.search;
@@ -74,7 +70,6 @@ controller.getBook = async (req, res) => {
     });
     res.render("index", { data: books });
   } catch (err) {
-    console.log(err.message);
     res.send(err);
   }
 };
