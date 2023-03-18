@@ -86,7 +86,8 @@
       const response = await request.json();
       if (response.message === "success") {
         window.alert("successfully deleted from wishlist");
-        window.location.reload();
+        window.location.search = "";
+        // window.location.reload();
       }
     }
   </script>
